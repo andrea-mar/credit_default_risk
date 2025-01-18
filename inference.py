@@ -20,6 +20,7 @@ X_test['MARRIAGE'] = X_test['MARRIAGE'].replace({0: 3})
 # Shift the values in the PAY_[digit] columns to match the data description
 pay_columns = X_test[[col for col in X_test.columns if col.startswith('PAY_') and col[4:].isdigit()]].columns
 X_test[pay_columns] = X_test[pay_columns] + 1
+X_test[pay_columns] = X_test[pay_columns].replace(0, -1) # replace 0 with -1
 
 
 # Load the saved PCA model from the pickle file
